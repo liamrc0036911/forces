@@ -48,13 +48,34 @@ private void Label2_Click(object sender, EventArgs e)
         }
 
         private void Button1_Click(object sender, EventArgs e)
-        {//read txt box values 
-            double Force = double.Parse(textBox1.Text);
-            double Angle = double.Parse(textBox2.Text);
+        {
+            double Force, angle;
+
+
+
+            //read txt box values
+            try
+            {
+                Force = double.Parse(textBox1.Text);
+            }
+            catch
+            {
+                MessageBox.Show("type a number not letter");
+                Force = 0.0;
+            }
+            try
+            {
+                angle = double.Parse(textBox2.Text);
+            }
+            catch
+            {
+                MessageBox.Show("type a number not letter");
+                angle = 0.0;
+            }
 
             //calculate fx and fy
-            double Fx = Force * cos(Angle);
-            double Fy = Force * sin(Angle);
+            double Fx = Force * cos(angle);
+            double Fy = Force * sin(angle);
 
             //put values for Fx and Fy in labels 
             label1.Text = "Fx = " + Fx + "N";
